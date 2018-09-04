@@ -15,6 +15,18 @@ app.prepare()
             app.render(req, res, actualPage, queryParams)
         })
 
+        server.get('/bins/:id/requests', (req, res) => {
+            const actualPage = '/requests'
+            const queryParams = { id: req.params.id }
+            app.render(req, res, actualPage, queryParams)
+        })
+
+        server.get('/bins/:id/requests/:rid', (req, res) => {
+            const actualPage = '/request'
+            const queryParams = { id: req.params.id, rid: req.params.rid }
+            app.render(req, res, actualPage, queryParams)
+        })
+
         server.get('*', (req, res) => {
             return handle(req, res)
         })

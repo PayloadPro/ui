@@ -7,9 +7,12 @@ const Bin = (props) => (
         <div className="markdown">
             <Markdown source={`
 # ${props.bin.attributes.name}
+
+[View Requests](http://localhost:3000/bins/${props.bin.id}/requests)
+
 ## ${props.bin.id}
 
-Created Times:
+Created Time:
 
  - ${props.bin.meta.created.unix.epoch}
  - ${props.bin.meta.created.unix.nano}
