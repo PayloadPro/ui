@@ -12,9 +12,6 @@ const Header = () => (
         <Link href="/rtfm">
             <a style={linkStyle}>RTFM</a>
         </Link>
-        <Link href="/start">
-            <a style={linkStyle}>Start</a>
-        </Link>
     </div>
 )
 
