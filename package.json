@@ -10,10 +10,12 @@
     "next-js": "^0.9.0-alpha",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-markdown": "^3.5.0",
     "rebass": "^2.0.0-10"
   },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"  }
+    "start": "NODE_ENV=production node server.js"
+  }
 }

@@ -10,7 +10,13 @@ const Layout = (props) => (
   <div style={layoutStyle}>
     <Header />
     {props.children}
+    <style jsx global>{`
+      body {
+        background: #aaa;
+      }
+    `}</style>
   </div>
+  
 )
 
 export default Layout
