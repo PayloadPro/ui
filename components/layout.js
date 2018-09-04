@@ -1,26 +1,16 @@
-import Link from 'next/link'
-import Head from 'next/head'
+import Header from './Header'
 
-export default ({ children, title = 'Payload Pro' }) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta charSet='utf-8' />
-      <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-    </Head>
-    <header>
-      <nav>
-        <Link prefetch href='/'><a>Home</a></Link> |
-        <Link prefetch href='/rtfm'><a>RTFM</a></Link> |
-      </nav>
-    </header>
+const layoutStyle = {
+  margin: 20,
+  padding: 20,
+  border: '1px solid #DDD'
+}
 
-    <body>
-      {children}
-    </body>
-
-    <footer>
-      {'footer'}
-    </footer>
+const Layout = (props) => (
+  <div style={layoutStyle}>
+    <Header />
+    {props.children}
   </div>
 )
+
+export default Layout

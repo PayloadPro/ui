@@ -1,57 +1,32 @@
-import Layout from '../components/layout'
-import Box from 'ui-box'
-import Manager from '../components/manager'
+import Layout from '../components/Layout.js'
+import Link from 'next/link'
+import fetch from 'isomorphic-unfetch'
 
-import { SegmentedControl, Pre, SideSheet, Paragraph, Pane, Text, Heading, Card, Button } from 'evergreen-ui'
-
-export default () => (
+const Index = (props) => (
   <Layout>
-
-    <Manager isShown={false}>
-      {({ state, setState }) => (
-        <Box>
-          <SideSheet
-            isShown={state.isShown}
-            onCloseComplete={() => setState({ isShown: false })}
-            containerProps={{
-              display: 'flex',
-              flex: '1',
-              flexDirection: 'column',
-            }}
-          >
-            <Pane zIndex={1} flexShrink={0} elevation={0} backgroundColor="white">
-              <Pane padding={16}>
-                <Heading size={600}>Making a Request</Heading>
-
-                <Paragraph size={400} color="extraMuted">
-                  Congratulations, your bin is ready to receive requests!
-            </Paragraph>
-
-              </Pane>
-            </Pane>
-            <Pane flex="1" overflowY="scroll" background="tint1" padding={16}>
-
-              <Heading>cURL</Heading>
-
-              <Card
-                elevation={1}
-                float="left"
-                backgroundColor="white"
-                padding={12}
-                alignItems="left"
-                flexDirection="column"
-              >
-                <Pre size={300} fontFamily={'mono'}>The quick brown fox jumps over the lazy dog</Pre>
-              </Card>
-
-            </Pane>
-          </SideSheet>
-          <Button onClick={() => setState({ isShown: true })}>
-            Making a Request
-      </Button>
-        </Box>
-      )}
-    </Manager>
-
+    <h1>Bins</h1>
+    <ul>
+      {props.bins.map(( bin, i ) => (
+        <li key={bin.id}>
+          <Link as={`/bins/${bin.id}`} href={`/post?id=${bin.id}`}>
+            <a>{bin.attributes.name}</a>
+          </Link>
+        </li>
+      ))}
+    </ul>
   </Layout>
 )
+
+Index.getInitialProps = async function () {
+  const res = await fetch('http://localhost:8081/bins')
+  const { data: data } = await res.json()
+
+  console.log(`Bins fetched. Count: ${data.length}`)
+  let output = {
+    bins: data
+  }
+  console.log(output)
+  return output
+}
+
+export default Index
