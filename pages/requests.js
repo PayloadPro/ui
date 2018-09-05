@@ -1,46 +1,12 @@
-import Layout from '../components/Layout.js'
-import Link from 'next/link'
+import Layout from '../components/Layout'
+import RequestListTable from '../components/RequestListTable'
 import fetch from 'isomorphic-unfetch'
 
-const RequestLink = ({ bin, request }) => {
-  return <li key={request.id}>
-    <Link href={`/bins/${bin.id}/requests/${request.id}`}>
-      <a>{request.attributes.method} ( {request.meta.created.utc} )</a>
-    </Link>
-  </li>
-}
 
 const Requests = (props) => (
   <Layout>
     <h1>Requests to "{props.bin.attributes.name}"</h1>
-    <ul>
-      {props.requests.map((request) => (
-        <RequestLink key={request.attributes.id} bin={props.bin} request={request} />
-      ))}
-    </ul>
-    <style jsx>{`
-      h1, a {
-        font-family: "Arial";
-      }
-
-      ul {
-        padding: 0;
-      }
-
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
-
-      a {
-        text-decoration: none;
-        color: blue;
-      }
-
-      a:hover {
-        opacity: 0.6;
-      }
-    `}</style>
+    <RequestListTable requests={props.requests} bin={props.bin} />
   </Layout>
 )
 
