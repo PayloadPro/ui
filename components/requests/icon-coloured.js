@@ -13,7 +13,7 @@ const colorForRequestMethod = {
 const RequestIconColored = (props) => {
     const color = colorForRequestMethod[props.request.attributes.method]
     return (
-        <Icon name='file alternate' color={color} />
+        <Icon circular name='file alternate' color={color} />
     )
 }
 

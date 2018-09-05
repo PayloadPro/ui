@@ -1,6 +1,5 @@
 import React from 'react'
-import NiceDate from '../components/NiceDate'
-import BinLink from '../components/BinLink'
+import NiceDate from '../../utils/date-nice'
 import { Table } from 'semantic-ui-react'
 
 const colorForRequestMethod = {
@@ -45,16 +44,12 @@ const RequestInfoTable = (props) => {
                     <Table.Cell><code>{props.request.attributes.content_length}</code> bytes</Table.Cell>
                 </Table.Row>
                 <Table.Row>
-                    <Table.Cell>Request Made</Table.Cell>
+                    <Table.Cell>Requested Time</Table.Cell>
                     <Table.Cell><NiceDate date={props.request.meta.created.utc} /></Table.Cell>
                 </Table.Row>
                 <Table.Row>
                     <Table.Cell>Request ID</Table.Cell>
                     <Table.Cell><code>{props.request.id}</code></Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                    <Table.Cell>Bin</Table.Cell>
-                    <Table.Cell><BinLink bin={props.bin} /></Table.Cell>
                 </Table.Row>
             </Table.Body>
         </Table>

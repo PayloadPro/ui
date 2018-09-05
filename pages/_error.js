@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/Layout.js'
+import Layout from '../layout/layout.js'
 
 const Error = (props) => (
     <Layout>
