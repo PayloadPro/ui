@@ -1,59 +1,39 @@
 import Layout from '../components/Layout.js'
+import NiceDate from '../components/NiceDate'
+import RelativeDate from '../components/RelativeDate'
+import RequestListTable from '../components/RequestListTable'
 import fetch from 'isomorphic-unfetch'
-import Markdown from 'react-markdown'
+import { Header, Icon } from 'semantic-ui-react'
+
+const BinHeader = (props) => (
+  <Header as='h2'>
+    <Icon name='zip' />
+    <Header.Content>
+      {props.bin.attributes.name}
+      <Header.Subheader>
+        <RelativeDate date={props.bin.meta.created.utc} /><br /><small>(<NiceDate date={props.bin.meta.created.utc} />)</small>
+      </Header.Subheader>
+    </Header.Content>
+  </Header>
+)
 
 const Bin = (props) => (
-    <Layout>
-        <div className="markdown">
-            <Markdown source={`
-# ${props.bin.attributes.name}
-
-[View Requests](http://localhost:3000/bins/${props.bin.id}/requests)
-
-## ${props.bin.id}
-
-Created Time:
-
- - ${props.bin.meta.created.unix.epoch}
- - ${props.bin.meta.created.unix.nano}
- - ${props.bin.meta.created.utc}
-
-API Links:
-
- - Source: ${props.bin.links.self}
- - All Requests: ${props.bin.links.requests}
- - Make a Request to: ${props.bin.links.request}
-            `}/>
-        </div>
-        <style jsx global>{`
-     .markdown {
-       font-family: 'Arial';
-     }
-
-     .markdown a {
-       text-decoration: none;
-       color: blue;
-     }
-
-     .markdown a:hover {
-       opacity: 0.6;
-     }
-
-     .markdown h3 {
-       margin: 0;
-       padding: 0;
-       text-transform: uppercase;
-     }
-  `}</style>
-    </Layout>
+  <Layout>
+    <BinHeader request={props.request} bin={props.bin} />
+    <RequestListTable requests={props.requests} bin={props.bin} />
+  </Layout>
 )
 
 Bin.getInitialProps = async function (context) {
-    const { id } = context.query
-    const res = await fetch(`http://localhost:8081/bins/${id}`)
-    const { data: bin } = await res.json()
+  const { id } = context.query
 
-    return { bin }
+  const binRes = await fetch(`http://localhost:8081/bins/${id}`)
+  const { data: bin } = await binRes.json()
+
+  const reqRes = await fetch(`http://localhost:8081/bins/${id}/requests`)
+  const { data: requests } = await reqRes.json()
+
+  return { requests, bin }
 }
 
 export default Bin
