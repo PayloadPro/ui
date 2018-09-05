@@ -12,7 +12,7 @@ const BinLink = ({ bin }) => {
 
 const Index = (props) => (
   <Layout>
-    <h1>Bins</h1>
+    <h1>Recently created bins:</h1>
     <ul>
       {props.bins.map(( bin ) => (
         <BinLink key={bin.id} bin={bin} />

@@ -4,12 +4,13 @@ import RelativeDate from '../components/RelativeDate'
 import RequestInfoTable from '../components/RequestInfoTable'
 import fetch from 'isomorphic-unfetch'
 import React from 'react'
-import { Header, Icon } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import BinLink from '../components/BinLink'
+import RequestIconColored from '../components/RequestIconColored'
 
 const RequestHeader = (props) => (
   <Header as='h2'>
-    <Icon name='file alternate' />
+    <RequestIconColored request={props.request} />
     <Header.Content>
       Viewing Request in <BinLink bin={props.bin} />
       <Header.Subheader>
