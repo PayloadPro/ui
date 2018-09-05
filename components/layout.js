@@ -1,3 +1,4 @@
+import 'semantic-ui-css/semantic.min.css'
 import Header from './Header'
 
 const layoutStyle = {
@@ -10,11 +11,6 @@ const Layout = (props) => (
   <div style={layoutStyle}>
     <Header />
     {props.children}
-    <style jsx global>{`
-      body {
-        background: #aaa;
-      }
-    `}</style>
   </div>
   
 )

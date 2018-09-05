@@ -31,7 +31,7 @@ const Index = (props) => (
     <h1>Bins</h1>
     <ul>
       {props.bins.map(( bin ) => (
-        <BinLink key={bin.attributes.id} bin={bin} />
+        <BinLink key={bin.id} bin={bin} />
       ))}
     </ul>
     <style jsx>{`
