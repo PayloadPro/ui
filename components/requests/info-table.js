@@ -1,5 +1,5 @@
 import React from 'react'
-import NiceDate from '../../utils/date-nice'
+import { NiceDate } from '../../utils/dates'
 import { Table } from 'semantic-ui-react'
 
 const colorForRequestMethod = {

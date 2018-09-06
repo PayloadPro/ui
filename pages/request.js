@@ -1,5 +1,5 @@
 import Layout from '../layout/layout.js'
-import RelativeDate from '../utils/date-relative'
+import { RelativeDate } from '../utils/dates'
 import RequestInfoTable from '../components/requests/info-table'
 import fetch from 'isomorphic-unfetch'
 import React from 'react'

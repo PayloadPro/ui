@@ -1,6 +1,5 @@
 import Layout from '../layout/layout.js'
-import NiceDate from '../utils/date-nice'
-import RelativeDate from '../utils/date-relative'
+import { NiceDate, RelativeDate } from '../utils/dates'
 import RequestListTable from '../components/requests/list-table'
 import fetch from 'isomorphic-unfetch'
 import { Header, Icon } from 'semantic-ui-react'

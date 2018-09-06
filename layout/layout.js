@@ -7,7 +7,7 @@ const Layout = (props) => (
   <div>
     <Header />
     <Grid container columns={1}>
-      {/* <Crumbs /> */}
+      <Crumbs />
       <Grid.Column>
         {props.children}
       </Grid.Column>
