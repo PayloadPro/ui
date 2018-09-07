@@ -1,4 +1,5 @@
 import { Grid, Segment, Menu } from 'semantic-ui-react'
+import CreateBinModal from '../components/bins/create-bin-modal'
 
 const Header = () => (
     <Segment inverted>
@@ -7,6 +8,9 @@ const Header = () => (
                 <Menu inverted pointing>
                     <Menu.Item name='Payload Pro' />
                     <Menu.Menu position='right'>
+                        <CreateBinModal />
+                    </Menu.Menu>
+                    <Menu.Menu >
                         <Menu.Item name='RTFM' />
                     </Menu.Menu>
                 </Menu>

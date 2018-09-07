@@ -33,9 +33,9 @@ class HomepageCards extends React.Component {
     render() {
         return (
             <Card.Group centered>
-                {this.cards.map((card) => {
+                {this.cards.map((card, i) => {
                     return (
-                        <Card>
+                        <Card key={i}>
                             <Card.Content>
                                 <Card.Header textAlign='center'>
                                     {card.header}
