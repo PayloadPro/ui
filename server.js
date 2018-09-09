@@ -16,13 +16,13 @@ app.prepare()
         })
 
         server.get('/bins/:id/requests', (req, res) => {
-            const actualPage = '/requests'
+            const actualPage = '/bin'
             const queryParams = { id: req.params.id }
             app.render(req, res, actualPage, queryParams)
         })
 
         server.get('/bins/:id/requests/:rid', (req, res) => {
-            const actualPage = '/request'
+            const actualPage = '/bin'
             const queryParams = { id: req.params.id, rid: req.params.rid }
             app.render(req, res, actualPage, queryParams)
         })

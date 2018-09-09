@@ -1,8 +1,6 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
 
-
-
 class HomepageCards extends React.Component {
     cards = [
         {

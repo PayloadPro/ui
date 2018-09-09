@@ -10,11 +10,11 @@ const colorForRequestMethod = {
     HEAD: 'blue'
 }
 
-const RequestIconColored = (props) => {
-    const color = colorForRequestMethod[props.request.attributes.method]
+const RequestIcon = (props) => {
+    const color = props.request ? (colorForRequestMethod[props.request.attributes.method]) : 'grey'
     return (
         <Icon circular name='file alternate' color={color} />
     )
 }
 
-export default RequestIconColored
+export default RequestIcon
