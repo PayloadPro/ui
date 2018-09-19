@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Header, Statistic, Loader } from 'semantic-ui-react'
+import { Divider, Grid, Header, Statistic, Loader } from 'semantic-ui-react'
 import RequestIcon from '../requests/icon'
 import { RelativeDate } from '../../utils/dates'
 import { Poll } from "restful-react"
@@ -18,7 +18,7 @@ const BinHeader = (props) => (
             ) : (
                     <Grid divided='vertically'>
                         <Grid.Row columns={2}>
-                            <Grid.Column width={11}>
+                            <Grid.Column width={8}>
                                 <Header as='h2'>
                                     <RequestIcon request={props.request} />
                                     <Header.Content>
@@ -27,13 +27,16 @@ const BinHeader = (props) => (
                                     </Header.Content>
                                 </Header>
                             </Grid.Column>
-                            <Grid.Column floated='right' width={5}>
+                            <Grid.Column width={8}>
                                 <Statistic horizontal>
                                     <Statistic.Value>{bin.meta.stats.requests.total}</Statistic.Value>
-                                    <Statistic.Label color='grey'>Requests to this bin</Statistic.Label>
+                                    <Statistic.Label color='grey'>Requests have been made to this bin</Statistic.Label>
                                 </Statistic>
+                                <Divider />
+                                <p><em>API Endpoint to make requests to:</em><br /><a href='{bin.links.request}'>{bin.links.request}</a><br /></p>
                             </Grid.Column>
                         </Grid.Row>
+                        <Divider />
                     </Grid>
                 );
         }}

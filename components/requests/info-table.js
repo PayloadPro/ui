@@ -28,6 +28,10 @@ const RequestInfoTable = (props) => {
                     <Table.Cell><pre>{JSON.stringify(props.request.attributes.body, null, 2)}</pre></Table.Cell>
                 </Table.Row>
                 <Table.Row>
+                    <Table.Cell>Content Type</Table.Cell>
+                    <Table.Cell><pre>{props.request.attributes.content_type}</pre></Table.Cell>
+                </Table.Row>
+                <Table.Row>
                     <Table.Cell>Protocol</Table.Cell>
                     <Table.Cell><code>{props.request.attributes.protocol}</code></Table.Cell>
                 </Table.Row>

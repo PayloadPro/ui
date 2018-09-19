@@ -1,6 +1,7 @@
 import 'semantic-ui-css/semantic.min.css'
 import Crumbs from './crumbs'
 import Header from './header'
+import Footer from './footer'
 import { Grid } from 'semantic-ui-react'
 
 const Layout = (props) => (
@@ -12,6 +13,7 @@ const Layout = (props) => (
         {props.children}
       </Grid.Column>
     </Grid>
+    <Footer />
   </div>
 )
 

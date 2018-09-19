@@ -1,14 +1,18 @@
 import BinLink from './link'
+import { Icon, List } from 'semantic-ui-react'
 
 const BinList = (props) => {
     return (
-        <ul>
+        <List relaxed='very'>
             {props.bins.map((bin) => (
-                <li key={bin.id}>
-                    <BinLink bin={bin} />
-                </li>
+                <List.Item key={bin.id}>
+                    <Icon name='home' />
+                    <List.Content>
+                        <BinLink bin={bin} />
+                    </List.Content>
+                </List.Item>
             ))}
-        </ul>
+        </List>
     )
 }
 

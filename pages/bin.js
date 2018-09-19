@@ -11,7 +11,7 @@ const Request = (props) => (
     <BinHeader request={props.request} bin={props.bin} />
     {props.requests === undefined || props.requests.length === 0 ?
       (<EmptyBinBody></EmptyBinBody>) :
-      (<BinInspector bin={props.bin} request={props.request} requests={props.requests} chartData={props.chartData} chartOptions={props.chartOptions}></BinInspector>)
+      (<BinInspector bin={props.bin} request={props.request} requests={props.requests}></BinInspector>)
     }
   </Layout>
 )

@@ -23,4 +23,8 @@ const RequestListTable = (props) => {
     )
 }
 
+RequestListTable.getInitialProps = async function (context) {
+    console.log(context)
+}
+
 export default RequestListTable
