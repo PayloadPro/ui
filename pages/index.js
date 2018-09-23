@@ -6,7 +6,6 @@ import { Grid, Icon, Image, Divider } from 'semantic-ui-react'
 
 const Index = (props) => (
   <Layout>
-    <asciinema-player src="intro.cast" cols="147" rows="36"></asciinema-player>
     <Image src='http://react.semantic-ui.com/images/wireframe/image.png' fluid />
     <Grid columns={2} divided>
       <Grid.Row>
