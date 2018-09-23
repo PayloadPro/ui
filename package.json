@@ -28,21 +28,9 @@
     "semantic-ui-react": "^0.82.5",
     "url-loader": "^1.1.1"
   },
-  "devDependencies": {
-    "pkg": "4.3.1"
-  },
-  "pkg": {
-    "assets": [
-      ".next/**/*"
-    ],
-    "scripts": [
-      ".next/dist/**/*.js"
-    ]
-  },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "pkg": "pkg . --targets node9-alpine-x64 --out-path pkg"
+    "start": "NODE_ENV=production node server.js"
   }
 }
