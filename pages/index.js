@@ -1,57 +1,37 @@
-import Layout from '../components/layout'
-import Box from 'ui-box'
-import Manager from '../components/manager'
+import Layout from '../layout/layout.js'
+import BinList from '../components/bins/list'
+import fetch from 'isomorphic-unfetch'
+import HomepageCards from '../components/homepage/cards'
+import { Grid, Icon, Image, Divider } from 'semantic-ui-react'
 
-import { SegmentedControl, Pre, SideSheet, Paragraph, Pane, Text, Heading, Card, Button } from 'evergreen-ui'
-
-export default () => (
+const Index = (props) => (
   <Layout>
-
-    <Manager isShown={false}>
-      {({ state, setState }) => (
-        <Box>
-          <SideSheet
-            isShown={state.isShown}
-            onCloseComplete={() => setState({ isShown: false })}
-            containerProps={{
-              display: 'flex',
-              flex: '1',
-              flexDirection: 'column',
-            }}
-          >
-            <Pane zIndex={1} flexShrink={0} elevation={0} backgroundColor="white">
-              <Pane padding={16}>
-                <Heading size={600}>Making a Request</Heading>
-
-                <Paragraph size={400} color="extraMuted">
-                  Congratulations, your bin is ready to receive requests!
-            </Paragraph>
-
-              </Pane>
-            </Pane>
-            <Pane flex="1" overflowY="scroll" background="tint1" padding={16}>
-
-              <Heading>cURL</Heading>
-
-              <Card
-                elevation={1}
-                float="left"
-                backgroundColor="white"
-                padding={12}
-                alignItems="left"
-                flexDirection="column"
-              >
-                <Pre size={300} fontFamily={'mono'}>The quick brown fox jumps over the lazy dog</Pre>
-              </Card>
-
-            </Pane>
-          </SideSheet>
-          <Button onClick={() => setState({ isShown: true })}>
-            Making a Request
-      </Button>
-        </Box>
-      )}
-    </Manager>
-
+    <Image src='http://react.semantic-ui.com/images/wireframe/image.png' fluid />
+    <Grid columns={2} divided>
+      <Grid.Row>
+        <Grid.Column width={12}>
+          <Divider horizontal><Icon name='react' /> Features</Divider>
+          <HomepageCards />
+        </Grid.Column>
+        <Grid.Column width={4}>
+          <Divider horizontal><Icon name='rebel' /> Recent Bins</Divider>
+          <BinList bins={props.bins} />
+          <p>Want to make your bins private? Get in touch...</p>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   </Layout>
 )
+
+Index.getInitialProps = async function () {
+  const res = await fetch('http://localhost:8081/bins')
+  const { data: data } = await res.json()
+
+  let output = {
+    bins: data
+  }
+
+  return output
+}
+
+export default Index
