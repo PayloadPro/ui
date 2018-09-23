@@ -1,8 +1,9 @@
 const express = require('express')
 const next = require('next')
+const nextConfig = require('./next.config');
 
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const app = next({ dev, dir: __dirname, conf: nextConfig });
 const handle = app.getRequestHandler()
 
 app.prepare()
