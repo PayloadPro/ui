@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Button, Form, Icon, Input, Message, Modal, TextArea } from 'semantic-ui-react'
 import axios from 'axios'
 
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
+const { API_URL, UI_URL } = publicRuntimeConfig;
+
 class CreateBinModal extends Component {
     state = {
         name: '',
@@ -33,7 +37,7 @@ class CreateBinModal extends Component {
             loading: true,
             disabled: true
         })
-        axios.post('http://localhost:8081/bins', {
+        axios.post(`${API_URL}/bins`, {
             data: {
                 attributes: {
                     name: name,
@@ -42,7 +46,7 @@ class CreateBinModal extends Component {
             }
         })
             .then((response) => {
-                let binLink = 'http://localhost:3000/bins/' + response.data.data.id
+                let binLink = `${UI_URL}/bins/${response.data.data.id}`
                 console.log(binLink)
                 this.setState({
                     loading: false,

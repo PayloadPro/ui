@@ -16,5 +16,9 @@ module.exports = withCss({
     })
 
     return config
+  },
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL || 'http://localhost:8081',
+    UI_URL: process.env.UI_URL || 'http://localhost:3000',
   }
 })
