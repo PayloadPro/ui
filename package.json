@@ -6,6 +6,7 @@
   "private": true,
   "bin": "server.js",
   "dependencies": {
+    "@babel/runtime": "^7.0.0",
     "@zeit/next-css": "^0.2.0",
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
