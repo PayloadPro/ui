@@ -4,6 +4,10 @@ import fetch from 'isomorphic-unfetch'
 import HomepageCards from '../components/homepage/cards'
 import { Grid, Icon, Image, Divider } from 'semantic-ui-react'
 
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
+const { API_URL } = publicRuntimeConfig;
+
 const Index = (props) => (
   <Layout>
     <Image src='http://react.semantic-ui.com/images/wireframe/image.png' fluid />
@@ -24,7 +28,7 @@ const Index = (props) => (
 )
 
 Index.getInitialProps = async function () {
-  const res = await fetch('http://localhost:8081/bins')
+  const res = await fetch(`${API_URL}/bins`)
   const { data: data } = await res.json()
 
   let output = {

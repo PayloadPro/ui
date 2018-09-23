@@ -4,8 +4,12 @@ import RequestIcon from '../requests/icon'
 import { RelativeDate } from '../../utils/dates'
 import { Poll } from "restful-react"
 
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
+const { API_URL } = publicRuntimeConfig;
+
 const BinHeader = (props) => (
-    <Poll base='http://localhost:8081' path={`/bins/${props.bin.id}`} resolve={response => JSON.parse(response)} interval={2000} lazy={false}>
+    <Poll base={API_URL} path={`/bins/${props.bin.id}`} resolve={response => JSON.parse(response)} interval={2000} lazy={false}>
         {(response, { loading, error }, { start }) => {
 
             let bin = {}
